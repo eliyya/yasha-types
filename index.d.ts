@@ -1,10 +1,11 @@
 import Youtube from './types/api/Youtube'
-import type Soundcloud from './types/api/Soundcloud'
+import Soundcloud from './types/api/Soundcloud'
+import Spotify from './types/api/Spotify'
 
 export const api: {
     Youtube: typeof Youtube
     Soundcloud: typeof Soundcloud
-    Spotify
+    Spotify: typeof Spotify
 }
 
 export const Source: any
