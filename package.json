@@ -1,6 +1,6 @@
 {
     "name": "@types/yasha",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "types": "index.d.ts",
     "description": "Types for yasha module",
     "main": "",
@@ -22,5 +22,8 @@
     "bugs": {
         "url": "https://github.com/eliyya/yasha-types/issues"
     },
-    "homepage": "https://github.com/eliyya/yasha-types#readme"
+    "homepage": "https://github.com/eliyya/yasha-types#readme",
+    "devDependencies": {
+        "typecript": "^0.0.1-security"
+    }
 }
