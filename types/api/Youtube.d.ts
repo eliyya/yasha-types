@@ -1,4 +1,5 @@
-class YoutubeAPI {
+// import { Track as TrackBase, TrackResults, TrackPlaylist, TrackStream, TrackStreams } from '../Track'
+declare class YoutubeAPI {
     // properties
     innertube_client: {
         clientName: string
@@ -37,10 +38,7 @@ class YoutubeAPI {
     track_match_best_result(results: any, track: any): any
 }
 
-const api: YoutubeAPI
-export default api
-
-class YoutubeMusic {
+declare class YoutubeMusic {
     // properties
     innertube_client: {
         clientName: string
@@ -62,9 +60,7 @@ class YoutubeMusic {
     search(search: any, continuation?: any, params?: any): Promise<any>
 }
 
-export const Music: YoutubeMusic
-
-class YoutubeTrack extends Track {
+declare class YoutubeTrack extends TrackBase {
     // properties
     plattform: 'Youtube'
 
@@ -84,11 +80,12 @@ class YoutubeTrack extends Track {
     from_playlist(track: any): any
 }
 
-export const Track: typeof YoutubeTrack
-
-class YoutubeResults extends TrackPlaylist {
+declare class YoutubeResults extends TrackResults {
     // properties
-    id: string
+    continuation: any
+
+    // constructor
+    new(): YoutubeResults
 
     // async methods
     next(): Promise<any>
@@ -99,11 +96,13 @@ class YoutubeResults extends TrackPlaylist {
     set_continuation(cont: any): any
 }
 
-export const Results: typeof YoutubePlaylist
-
-class YoutubePlaylist extends TrackPlaylist {
+declare class YoutubePlaylist extends TrackPlaylist {
     // properties
     id: string
+    next_offset: any
+
+    // constructor
+    new(): YoutubePlaylist
 
     // getters
     get url(): string
@@ -115,4 +114,52 @@ class YoutubePlaylist extends TrackPlaylist {
     process(id: any, data: any, offset: any): any
 }
 
+// class YoutubeStream extends TrackStream {
+//     itag: any
+//     new(url: any, itag: any): YoutubeStream
+//     equals(other: any): any
+// }
+
+// class YoutubeStreams extends TrackStreams {
+//     expire: any
+//     from(start: any, playerResponse: any): this
+//     expired(): any
+//     extract_streams(streams: any, adaptive?: any): any
+// }
+
+// class YoutubeMusicTrack extends YoutubeTrack {
+//     type: any
+//     explicit: any
+//     artists: any
+
+//     new(): YoutubeMusicTrack
+
+//     parse_metadata(has_type: any, metadata: any): any
+//     from_search(track: any, has_type?: any): any
+//     from_section(track: any): any
+// }
+
+// class YoutubeMusicResults extends TrackResults {
+//     top_result: any
+//     songs: any
+//     continuation: any
+//     browse: any
+//     query: any
+
+//     process(body: any): any
+//     process_section(section: any): any
+//     from_section(list: any): any
+//     process_once(body: any): any
+//     extract_tracks(list: any): any
+//     set_continuation(cont: any): any
+//     set_browse(query: any, params: any): any
+
+//     next(): Promise<any>
+// }
+
+declare const api: YoutubeAPI
+export default api
+export const Music: YoutubeMusic
+export const Track: typeof YoutubeTrack
+export const Results: typeof YoutubePlaylist
 export const Playlist: typeof YoutubePlaylist

@@ -1,7 +1,10 @@
-export const api = {
-    Youtube,
-    Soundcloud,
-    Spotify,
+import Youtube from './types/api/Youtube'
+import type Soundcloud from './types/api/Soundcloud'
+
+export const api: {
+    Youtube: typeof Youtube
+    Soundcloud: typeof Soundcloud
+    Spotify
 }
 
 export const Source: any
@@ -11,7 +14,6 @@ export const VoiceConnection: any
 /**
 module.exports = {
 	api: {
-		Youtube: require('./src/api/Youtube'),
 		Soundcloud: require('./src/api/Soundcloud'),
 		Spotify: require('./src/api/Spotify')
 	},
