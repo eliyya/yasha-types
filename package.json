@@ -1,0 +1,26 @@
+{
+    "name": "@types/yasha",
+    "version": "1.0.0",
+    "types": "index.d.ts",
+    "description": "Types for yasha module",
+    "main": "",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/eliyya/yasha-types.git"
+    },
+    "keywords": [
+        "yasha",
+        "types",
+        "ts",
+        "typescript"
+    ],
+    "author": "eliyya",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/eliyya/yasha-types/issues"
+    },
+    "homepage": "https://github.com/eliyya/yasha-types#readme"
+}
