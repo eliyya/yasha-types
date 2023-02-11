@@ -9,7 +9,7 @@ declare class SpotifyTrack extends TrackBase {
     platform: 'Spotify'
 
     // constructor
-    new(): SpotifyTrack
+    constructor()
 
     // grtters
     get url(): any
@@ -41,7 +41,7 @@ declare class SpotifyPlaylist extends TrackPlaylist {
     start: any
 
     // constructtor
-    new(): SpotifyPlaylist
+    constructor()
 
     // getters
     get url(): any
@@ -67,7 +67,7 @@ declare class SpotifyAPI {
     Playlist: typeof SpotifyPlaylist
 
     // constructor
-    new(): SpotifyAPI
+    constructor()
 
     // async methods
     list_once(type: any, id: any, start?: any, length?: any): Promise<any>
