@@ -3,6 +3,7 @@ import Soundcloud from './types/api/Soundcloud'
 import Spotify from './types/api/Spotify'
 import Source from './types/Source'
 import Track from './types/Track'
+import TrackPlayer from './types/TrackPlayer'
 
 export const api: {
     Youtube: typeof Youtube
@@ -10,14 +11,5 @@ export const api: {
     Spotify: typeof Spotify
 }
 
-export { Source, Track }
-export const TrackPlayer: any
+export { Source, Track, TrackPlayer }
 export const VoiceConnection: any
-/**
-module.exports = {
-	Source: require('./src/Source'),
-	Track: require('./src/Track'),
-	TrackPlayer: require('./src/TrackPlayer'),
-	VoiceConnection: require('./src/VoiceConnection'),
-};
- */
