@@ -1,8 +1,4 @@
-// const Request = require('../Request')
-// const SourceError = require('../SourceError')
-// const Youtube = require('./Youtube')
-
-// import { Track as TrackBase, TrackImage, TrackResults, TrackPlaylist } from '../Track'
+import { Track as TrackBase, TrackImage, TrackResults, TrackPlaylist } from '../Track'
 
 declare class SpotifyTrack extends TrackBase {
     // properties

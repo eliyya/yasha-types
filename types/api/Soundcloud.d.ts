@@ -1,4 +1,4 @@
-// import { Track as TrackBase, TrackImage, TrackResults, TrackPlaylist, TrackStream, TrackStreams } from '../Track'
+import { Track as TrackBase, TrackImage, TrackResults, TrackPlaylist, TrackStream, TrackStreams } from '../Track'
 
 declare class SoundcloudTrack extends TrackBase {
     // properties

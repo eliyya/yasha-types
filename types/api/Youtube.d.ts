@@ -1,4 +1,4 @@
-// import { Track as TrackBase, TrackResults, TrackPlaylist, TrackStream, TrackStreams } from '../Track'
+import { Track as TrackBase, TrackResults, TrackPlaylist, TrackStream, TrackStreams } from '../Track'
 declare class YoutubeAPI {
     // properties
     innertube_client: {
@@ -99,48 +99,46 @@ declare class YoutubePlaylist extends TrackPlaylist {
     process(id: any, data: any, offset: any): any
 }
 
-// class YoutubeStream extends TrackStream {
-//     itag: any
-//     constructor(url: any, itag: any): YoutubeStream
-//     equals(other: any): any
-// }
+declare class YoutubeStream extends TrackStream {
+    itag: any
+    constructor(url: any, itag: any)
+    equals(other: any): any
+}
 
-// class YoutubeStreams extends TrackStreams {
-//     expire: any
-//     from(start: any, playerResponse: any): this
-//     expired(): any
-//     extract_streams(streams: any, adaptive?: any): any
-// }
+declare class YoutubeStreams extends TrackStreams {
+    expire: any
+    from(start: any, playerResponse: any): this
+    expired(): any
+    extract_streams(streams: any, adaptive?: any): any
+}
 
-// class YoutubeMusicTrack extends YoutubeTrack {
-//     type: any
-//     explicit: any
-//     artists: any
+declare class YoutubeMusicTrack extends YoutubeTrack {
+    type: any
+    explicit: any
+    artists: any
 
-//
+    parse_metadata(has_type: any, metadata: any): any
+    from_search(track: any, has_type?: any): any
+    from_section(track: any): any
+}
 
-//     parse_metadata(has_type: any, metadata: any): any
-//     from_search(track: any, has_type?: any): any
-//     from_section(track: any): any
-// }
+declare class YoutubeMusicResults extends TrackResults {
+    top_result: any
+    songs: any
+    continuation: any
+    browse: any
+    query: any
 
-// class YoutubeMusicResults extends TrackResults {
-//     top_result: any
-//     songs: any
-//     continuation: any
-//     browse: any
-//     query: any
+    process(body: any): any
+    process_section(section: any): any
+    from_section(list: any): any
+    process_once(body: any): any
+    extract_tracks(list: any): any
+    set_continuation(cont: any): any
+    set_browse(query: any, params: any): any
 
-//     process(body: any): any
-//     process_section(section: any): any
-//     from_section(list: any): any
-//     process_once(body: any): any
-//     extract_tracks(list: any): any
-//     set_continuation(cont: any): any
-//     set_browse(query: any, params: any): any
-
-//     next(): Promise<any>
-// }
+    next(): Promise<any>
+}
 
 declare const api: YoutubeAPI
 export default api

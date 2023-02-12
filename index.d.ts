@@ -2,7 +2,7 @@ import Youtube from './types/api/Youtube'
 import Soundcloud from './types/api/Soundcloud'
 import Spotify from './types/api/Spotify'
 import Source from './types/Source'
-import Track from './types/Ttrack'
+import Track from './types/Track'
 
 export const api: {
     Youtube: typeof Youtube
