@@ -8,7 +8,6 @@ declare class APISource {
     Results: any
     Playlist: any
 
-    // constructor
     new(api: any): APISource
 
     // async methods
@@ -30,9 +29,6 @@ declare class Youtube extends APISource {
     id_regex: any
     api: any
 
-    // constructor
-    constructor()
-
     // methods
     weak_match(id: any): any
     match(content: any): any
@@ -46,9 +42,6 @@ declare class Youtube extends APISource {
 }
 
 declare class Soundcloud extends APISource {
-    // constructor
-    constructor()
-
     // methods
     match(content: any): any
 
@@ -59,9 +52,6 @@ declare class Soundcloud extends APISource {
 }
 
 declare class Spotify extends APISource {
-    // constructor
-    constructor()
-
     // methods
     match(content: any): any
     setCookie(cookie: any): any
@@ -74,9 +64,6 @@ declare class Spotify extends APISource {
 }
 
 declare class AppleMusic extends APISource {
-    // constructor
-    constructor()
-
     // methods
     match(content: any): any
 
@@ -88,9 +75,6 @@ declare class AppleMusic extends APISource {
 }
 
 declare class File extends APISource {
-    // constructor
-    constructor()
-
     // methods
     resolve(content: any): any
 }

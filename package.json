@@ -1,6 +1,6 @@
 {
     "name": "@types/yasha",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "types": "index.d.ts",
     "description": "Types for yasha module",
     "main": "",

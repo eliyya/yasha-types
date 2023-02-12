@@ -17,9 +17,6 @@ declare class YoutubeAPI {
     Results: typeof YoutubeResults
     Playlist: typeof YoutubePlaylist
 
-    // constructor
-    constructor()
-
     // async methods
     api_request(path: any, body?: any, query?: any, origin?: any): Promise<any>
     get(id: any): Promise<any>
@@ -48,9 +45,6 @@ declare class YoutubeMusic {
     }
     innertube_key: string
 
-    // constructor
-    constructor()
-
     // getters
     get cookie(): string
     get sapisid(): string
@@ -63,9 +57,6 @@ declare class YoutubeMusic {
 declare class YoutubeTrack extends TrackBase {
     // properties
     plattform: 'Youtube'
-
-    // constructor
-    constructor()
 
     // getters
     get url(): string
@@ -84,9 +75,6 @@ declare class YoutubeResults extends TrackResults {
     // properties
     continuation: any
 
-    // constructor
-    constructor()
-
     // async methods
     next(): Promise<any>
 
@@ -100,9 +88,6 @@ declare class YoutubePlaylist extends TrackPlaylist {
     // properties
     id: string
     next_offset: any
-
-    // constructor
-    constructor()
 
     // getters
     get url(): string
@@ -132,7 +117,7 @@ declare class YoutubePlaylist extends TrackPlaylist {
 //     explicit: any
 //     artists: any
 
-//     constructor()
+//
 
 //     parse_metadata(has_type: any, metadata: any): any
 //     from_search(track: any, has_type?: any): any

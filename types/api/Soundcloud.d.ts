@@ -5,9 +5,6 @@ declare class SoundcloudTrack extends TrackBase {
     platform: 'Soundcloud'
     permalink_url: any
 
-    // constructor
-    constructor()
-
     // getters
     get url(): any
 
@@ -25,9 +22,6 @@ declare class SoundcloudResults extends TrackResults {
     query: any
     start: any
 
-    // constructor
-    constructor()
-
     // async methods
     next(): Promise<any>
 
@@ -40,9 +34,6 @@ declare class SoundcloudPlaylist extends TrackPlaylist {
     permalink_url: any
     id: any
     start: any
-
-    // constructor
-    constructor()
 
     // getters
     get url(): any
@@ -59,17 +50,11 @@ declare class SoundcloudStream extends TrackStream {
     // properties
     stream_url: any
 
-    // constructor
-    constructor()
-
     // async methods
     getUrl(): Promise<any>
 }
 
 declare class SoundcloudStreams extends TrackStreams {
-    // constructor
-    constructor()
-
     // methods
     extract_streams(streams: any): any
     from(track: any): any
@@ -86,9 +71,6 @@ declare class SoundcloudAPI {
     Track: typeof SoundcloudTrack
     Results: typeof SoundcloudResults
     Playlist: typeof SoundcloudPlaylist
-
-    // constructor
-    constructor()
 
     // async methods
     reload(): Promise<any>
