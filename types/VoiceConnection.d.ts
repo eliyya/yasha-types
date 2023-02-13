@@ -24,7 +24,7 @@ declare class VoiceConnection extends VoiceConnectionBase {
     static disconnect(guild: any, options?: any): any
 
     // injection
-    static Status: VoiceConnectionStatus
+    static Status: typeof VoiceConnectionStatus
 
     // static async methods
     static connect(channel: any, options?: any): Promise<any>
