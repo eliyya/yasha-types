@@ -82,11 +82,11 @@ declare class File extends APISource {
 declare class Source {
     static resolve(input: any, weak?: any): any
     static File: File
-    AppleMusic: AppleMusic
-    Spotify: Spotify
-    Soundcloud: Soundcloud
-    Youtube: Youtube
-    Error: any
+    static AppleMusic: AppleMusic
+    static Spotify: Spotify
+    static Soundcloud: Soundcloud
+    static Youtube: Youtube
+    static Error: any
 }
 
 export default Source
