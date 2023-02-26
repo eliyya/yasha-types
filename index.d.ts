@@ -24,7 +24,7 @@ declare const api: {
     Spotify: typeof Spotify
 }
 
-export { Source, Track, TrackPlayer, VoiceConnection, api }
+// export { Source, Track, TrackPlayer, VoiceConnection, api }
 
 declare const yasha: {
     Source: typeof Source
