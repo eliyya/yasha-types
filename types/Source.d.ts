@@ -1,86 +1,139 @@
 // const SourceError = require('./SourceError')
+import SoundcloudAPI from './api/Soundcloud'
+import YoutubeAPI from './api/Youtube'
+import SpotifyAPI from './api/Spotify'
+// TODO: ADD AppleMusicAPI & FileAPI
 
-declare class APISource {
+// TODO: ADD MISSING TYPES
+
+declare class APISource<T extends 'Youtube' | 'Spotify' | 'Soundcloud' | 'AppleMusic' | 'File'> {
     // properties
-    name: any
-    api: any
-    Track: any
-    Results: any
-    Playlist: any
+    name: T
+    api: T extends 'Youtube'
+        ? typeof YoutubeAPI
+        : T extends 'Spotify'
+        ? typeof SpotifyAPI
+        : T extends 'Soundcloud'
+        ? typeof SoundcloudAPI
+        : any
+    Track: T extends 'Youtube'
+        ? typeof YoutubeAPI.Track
+        : T extends 'Spotify'
+        ? typeof SpotifyAPI.Track
+        : T extends 'Soundcloud'
+        ? typeof SoundcloudAPI.Track
+        : any
+    Results: T extends 'Youtube'
+        ? typeof YoutubeAPI.Results
+        : T extends 'Spotify'
+        ? typeof SpotifyAPI.Results
+        : T extends 'Soundcloud'
+        ? typeof SoundcloudAPI.Results
+        : any
+    Playlist: T extends 'Youtube'
+        ? typeof YoutubeAPI.Playlist
+        : T extends 'Spotify'
+        ? typeof SpotifyAPI.Playlist
+        : T extends 'Soundcloud'
+        ? typeof SoundcloudAPI.Playlist
+        : any
 
-    new(api: any): APISource
+    new(api: T): APISource<T>
 
     // async methods
-    resolve(match?: any): Promise<any>
+    resolve(match?: any): Promise<null>
+    // ?
     get(id?: any): Promise<any>
+    // ?
     getStreams(id?: any): Promise<any>
-    search(query?: any): Promise<any>
-    playlistOnce(id?: any): Promise<any>
+    search(query?: any): Promise<null>
+    playlistOnce(id?: any): Promise<null>
+    // ?
     playlist(id: any, length?: any): Promise<any>
 
     // methods
     match(content?: any): any
     weak_match(content?: any): any
-    matches(content?: any): any
+    matches(content?: any): boolean
 }
 
-declare class Youtube extends APISource {
+declare class Youtube extends APISource<'Youtube'> {
+    // TODO: check this.api.Music type
     Music: any
-    id_regex: any
-    api: any
+    id_regex: RegExp
 
     // methods
-    weak_match(id: any): any
-    match(content: any): any
-    setCookie(cookie: any): any
+    weak_match(id: string): { id: string } | null
+    match(content: URL): { id: string } | null
+    setCookie(cookie: string): void
 
     // async methods
-    resolve(match: any): Promise<any>
-    weak_resolve(match: any): Promise<any>
+    // ?
+    resolve(match: { id: string } | { list: string }): Promise<any>
+    // ?
+    weak_resolve(match: { id: string } | { list: string }): Promise<any>
+    // ?
     search(query: any, continuation?: any): Promise<any>
+    // ?
     playlistOnce(id: any, start?: any): Promise<any>
 }
 
-declare class Soundcloud extends APISource {
+declare class Soundcloud extends APISource<'Soundcloud'> {
     // methods
-    match(content: any): any
+    // ?
+    match(content: URL): any
 
     // async methods
+    // ?
     resolve(match: any): Promise<any>
+    // ?
     search(query: any, offset?: any, length?: any): Promise<any>
+    // ?
     playlistOnce(id?: any, offset?: any, length?: any): Promise<any>
 }
 
-declare class Spotify extends APISource {
+declare class Spotify extends APISource<'Spotify'> {
     // methods
-    match(content: any): any
-    setCookie(cookie: any): any
+    // ?
+    match(content: URL): any
+    setCookie(cookie: string): void
 
     // async methods
-    resolve(match): Promise<any>
+    // ?
+    resolve(match: { track: any } | { playlist: any } | { album: any }): Promise<any>
+    // ?
     search(query: any, offset?: any, length?: any): Promise<any>
+    // ?
     playlistOnce(id: any, offset?: any, length?: any): Promise<any>
+    // ?
     albumOnce(id: any, offset?: any, length?: any): Promise<any>
 }
 
-declare class AppleMusic extends APISource {
+declare class AppleMusic extends APISource<'AppleMusic'> {
     // methods
-    match(content: any): any
+    // ?
+    match(content: URL): any
 
     // async methods
-    resolve(match: any): Promise<any>
+    // ?
+    resolve(match: { track: any } | { playlist: any } | { album: any }): Promise<any>
+    // ?
     search(query: any, offset?: any, length?: any): Promise<any>
+    // ?
     playlistOnce(id: any, offset?: any, length?: any): Promise<any>
+    // ?
     albumOnce(id: any, offset?: any, length?: any): Promise<any>
 }
 
-declare class File extends APISource {
+declare class File extends APISource<'File'> {
     // methods
-    resolve(content: any): any
+    // ?
+    resolve(content: URL): any
 }
 
 declare class Source {
-    static resolve(input: any, weak?: any): any
+    // ?
+    static resolve(input: any, weak?: boolean): any
     static File: File
     static AppleMusic: AppleMusic
     static Spotify: Spotify
