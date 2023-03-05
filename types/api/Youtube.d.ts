@@ -19,23 +19,23 @@ declare class YoutubeAPI {
     Playlist: typeof YoutubePlaylist
 
     // async methods
-    api_request(path: string, body?: object, query?: string, origin?: string): Promise<any>
+    private api_request(path: string, body?: object, query?: string, origin?: string): Promise<any>
     get(id: string): Promise<YoutubeTrack>
-    get_streams(id: string): Promise<YoutubeStreams>
-    playlist_once(id: string, start?: number): Promise<YoutubePlaylist>
+    private get_streams(id: string): Promise<YoutubeStreams>
+    private playlist_once(id: string, start?: number): Promise<YoutubePlaylist>
     playlist(id: string, limit?: number): Promise<YoutubePlaylist>
     search(query: string, continuation?: string): Promise<YoutubeResults>
-    track_match_lookup(track: YoutubeMusicTrack): Promise<YoutubeMusicTrack>
+    private track_match_lookup(track: YoutubeMusicTrack): Promise<YoutubeMusicTrack>
     // ?
-    track_match(track: any): Promise<YoutubeStreams | YoutubeMusicTrack>
+    private track_match(track: any): Promise<YoutubeStreams | YoutubeMusicTrack>
 
     // methods
-    set_cookie(cookiestr?: string): void
-    string_word_match(big: string, small: string): number
-    track_match_score(track: YoutubeMusicTrack, result: YoutubeMusicTrack): number
+    private set_cookie(cookiestr?: string): void
+    private string_word_match(big: string, small: string): number
+    private track_match_score(track: YoutubeMusicTrack, result: YoutubeMusicTrack): number
     // ?
-    track_match_best(results: any[], track: YoutubeMusicTrack): YoutubeMusicTrack | null
-    track_match_best_result(results: YoutubeMusicResults[], track: YoutubeMusicTrack): YoutubeMusicTrack
+    private track_match_best(results: any[], track: YoutubeMusicTrack): YoutubeMusicTrack | null
+    private track_match_best_result(results: YoutubeMusicResults[], track: YoutubeMusicTrack): YoutubeMusicTrack
 }
 
 declare class YoutubeMusic {
@@ -53,7 +53,7 @@ declare class YoutubeMusic {
     get sapisid(): string
 
     // async methods
-    api_request(path: any, body?: any, query?: any): Promise<any>
+    private api_request(path: any, body?: any, query?: any): Promise<any>
     search(search: any, continuation?: any, params?: any): Promise<any>
 }
 
@@ -70,8 +70,8 @@ declare class YoutubeTrack extends TrackBase {
 
     // methods
     from(video_details: any, author: any, streams: any): any
-    from_search(track: any): any
-    from_playlist(track: any): any
+    private from_search(track: any): any
+    private from_playlist(track: any): any
 }
 
 declare class YoutubeResults extends TrackResults {
@@ -83,8 +83,8 @@ declare class YoutubeResults extends TrackResults {
 
     // methods
     process(body: any): any
-    extract_tracks(list: any): any
-    set_continuation(cont: any): any
+    private extract_tracks(list: any): any
+    private set_continuation(cont: any): any
 }
 
 declare class YoutubePlaylist extends TrackPlaylist {
@@ -112,7 +112,7 @@ declare class YoutubeStreams extends TrackStreams {
     expire: any
     from(start: any, playerResponse: any): this
     expired(): any
-    extract_streams(streams: any, adaptive?: any): any
+    private extract_streams(streams: any, adaptive?: any): any
 }
 
 declare class YoutubeMusicTrack extends YoutubeTrack {
@@ -120,9 +120,9 @@ declare class YoutubeMusicTrack extends YoutubeTrack {
     explicit: any
     artists: any
 
-    parse_metadata(has_type: any, metadata: any): any
-    from_search(track: any, has_type?: any): any
-    from_section(track: any): any
+    private parse_metadata(has_type: any, metadata: any): any
+    private from_search(track: any, has_type?: any): any
+    private from_section(track: any): any
 }
 
 declare class YoutubeMusicResults extends TrackResults {
@@ -133,12 +133,12 @@ declare class YoutubeMusicResults extends TrackResults {
     query: any
 
     process(body: any): any
-    process_section(section: any): any
-    from_section(list: any): any
-    process_once(body: any): any
-    extract_tracks(list: any): any
-    set_continuation(cont: any): any
-    set_browse(query: any, params: any): any
+    private process_section(section: any): any
+    private from_section(list: any): any
+    private process_once(body: any): any
+    private extract_tracks(list: any): any
+    private set_continuation(cont: any): any
+    private set_browse(query: any, params: any): any
 
     next(): Promise<any>
 }

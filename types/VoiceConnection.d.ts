@@ -19,7 +19,7 @@ declare class VoiceConnection extends VoiceConnectionBase {
     constructor(channel: any, options: any)
 
     // sttatic methods
-    static disconnect_reason(reason: any): any
+    private static disconnect_reason(reason: any): any
     static get(guild: any): any
     static disconnect(guild: any, options?: any): any
 
@@ -30,17 +30,17 @@ declare class VoiceConnection extends VoiceConnectionBase {
     static connect(channel: any, options?: any): Promise<any>
 
     // methods
-    rejoin_id(channelId: any): any
+    private rejoin_id(channelId: any): any
     rejoin(channel: any): any
     ready(): any
     addStatePacket(packet: any): any
     onNetworkingError(error: any): any
-    handle_state_change(state: any): any
+    private handle_state_change(state: any): any
     destroy(adapter_available?: any): any
     disconnect(): any
 
     // async methods
-    await_connection(): Promise<any>
+    private await_connection(): Promise<any>
 
     // setters
     set state(state: any)

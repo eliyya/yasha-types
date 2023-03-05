@@ -34,24 +34,24 @@ declare class TrackPlayer extends EventEmitter {
     onstatechange(old: any, cur: any): any
     subscribe(connection: any): any
     unsubscribe(subscription: any): any
-    unsubscribe_all(): any
+    private unsubscribe_all(): any
     onpacket(packet: any, length: any, frame_size: any): any
     onfinish(): any
     onerror(error: any, code: any, retryable: any): any
-    secretbox_ready(): any
-    get_connection(): any
-    get_connection_data(): any
-    get_connection_udp(): any
-    init_secretbox(): any
-    create_player(start_time?: any): any
+    private secretbox_ready(): any
+    private get_connection(): any
+    private get_connection_data(): any
+    private get_connection_udp(): any
+    private init_secretbox(): any
+    private create_player(start_time?: any): any
     send(buffer: any, frame_size: any, is_silence?: any): any
-    start_silence_frames(): any
-    stop_silence_frames(): any
+    private start_silence_frames(): any
+    private stop_silence_frames(): any
     error(error: any, retryable?: any): any
-    get_best_stream_one(streams: any): any
-    get_best_stream(streams: any): any
+    private get_best_stream_one(streams: any): any
+    private get_best_stream(streams: any): any
     play(track: any): any
-    check_destroyed(): any
+    private check_destroyed(): any
     hasPlayer(): any
     isPaused(): any
     setPaused(paused?: any): any
@@ -68,12 +68,12 @@ declare class TrackPlayer extends EventEmitter {
     getTotalFrames(): any
     isCodecCopy(): any
     stop(): any
-    destroy_player(): any
+    private destroy_player(): any
     cleanup(): any
     destroy(): any
 
     // async methods
-    load_streams(): Promise<any>
+    private load_streams(): Promise<any>
     start(): Promise<any>
 }
 

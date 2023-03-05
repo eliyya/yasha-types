@@ -14,7 +14,7 @@ declare class SoundcloudTrack extends TrackBase {
 
     // methods
     from(track: any): any
-    get_thumbnails(track: any): any
+    private get_thumbnails(track: any): any
 }
 
 declare class SoundcloudResults extends TrackResults {
@@ -26,7 +26,7 @@ declare class SoundcloudResults extends TrackResults {
     next(): Promise<any>
 
     // methods
-    set_continuation(query: any, start: any): any
+    private set_continuation(query: any, start: any): any
 }
 
 declare class SoundcloudPlaylist extends TrackPlaylist {
@@ -43,7 +43,7 @@ declare class SoundcloudPlaylist extends TrackPlaylist {
 
     // methods
     form(list: any): any
-    set_continuation(id: any, start: any): any
+    private set_continuation(id: any, start: any): any
 }
 
 declare class SoundcloudStream extends TrackStream {
@@ -56,7 +56,7 @@ declare class SoundcloudStream extends TrackStream {
 
 declare class SoundcloudStreams extends TrackStreams {
     // methods
-    extract_streams(streams: any): any
+    private extract_streams(streams: any): any
     from(track: any): any
     expired(): any
     maybeExpired(): any
@@ -77,18 +77,18 @@ declare class SoundcloudAPI {
     prefetch(): Promise<any>
     load(): Promise<any>
     request(path: any, query?: any): Promise<any>
-    api_request(path: any, query: any): Promise<any>
-    resolve_playlist(list: any, offset?: any, limit?: any): Promise<any>
+    private api_request(path: any, query: any): Promise<any>
+    private resolve_playlist(list: any, offset?: any, limit?: any): Promise<any>
     resolve(url: any): Promise<any>
-    resolve_shortlink(id: any): Promise<any>
+    private resolve_shortlink(id: any): Promise<any>
     get(id: any): Promise<any>
-    get_streams(id: any): Promise<any>
+    private get_streams(id: any): Promise<any>
     search(query: any, offset?: any, limit?: any): Promise<any>
-    playlist_once(id, offset?: any, limit?: any): Promise<any>
+    private playlist_once(id, offset?: any, limit?: any): Promise<any>
     playlist(id: any, limit?: any): Promise<any>
 
     // methods
-    check_valid_id(id: any): any
+    private check_valid_id(id: any): any
 }
 
 declare const api: SoundcloudAPI

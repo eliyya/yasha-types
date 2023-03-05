@@ -53,7 +53,7 @@ declare class APISource<T extends 'Youtube' | 'Spotify' | 'Soundcloud' | 'AppleM
 
     // methods
     match(content?: any): any
-    weak_match(content?: any): any
+    private weak_match(content?: any): any
     matches(content?: any): boolean
 }
 
@@ -63,7 +63,7 @@ declare class Youtube extends APISource<'Youtube'> {
     id_regex: RegExp
 
     // methods
-    weak_match(id: string): { id: string } | null
+    private weak_match(id: string): { id: string } | null
     match(content: URL): { id: string } | null
     setCookie(cookie: string): void
 
@@ -71,7 +71,7 @@ declare class Youtube extends APISource<'Youtube'> {
     // ?
     resolve(match: { id: string } | { list: string }): Promise<any>
     // ?
-    weak_resolve(match: { id: string } | { list: string }): Promise<any>
+    private weak_resolve(match: { id: string } | { list: string }): Promise<any>
     // ?
     search(query: any, continuation?: any): Promise<YoutubeResults>
     playlistOnce(id: string, start?: number): Promise<YoutubePlaylist>

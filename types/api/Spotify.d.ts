@@ -24,7 +24,7 @@ declare class SpotifyResults extends TrackResults {
     next(): Promise<any>
 
     // methods
-    set_continuation(query: any, start: any): any
+    private set_continuation(query: any, start: any): any
 }
 
 declare class SpotifyPlaylist extends TrackPlaylist {
@@ -43,7 +43,7 @@ declare class SpotifyPlaylist extends TrackPlaylist {
 
     // methods
     set(type: any, id: any): any
-    set_continuation(start: any): any
+    private set_continuation(start: any): any
 }
 
 declare class SpotifyAPI {
@@ -59,22 +59,22 @@ declare class SpotifyAPI {
     Playlist: typeof SpotifyPlaylist
 
     // async methods
-    list_once(type: any, id: any, start?: any, length?: any): Promise<any>
-    playlist_once(id: any, start?: any, length?: any): Promise<any>
-    album_once(id: any, start?: any, length?: any): Promise<any>
+    private list_once(type: any, id: any, start?: any, length?: any): Promise<any>
+    private playlist_once(id: any, start?: any, length?: any): Promise<any>
+    private album_once(id: any, start?: any, length?: any): Promise<any>
     search(query: any, start?: any, length?: any): Promise<any>
     list(type: any, id: any, limit?: any): Promise<any>
-    api_request(path: any, options?: any): Promise<any>
+    private api_request(path: any, options?: any): Promise<any>
     playlist(id: any, length?: any): Promise<any>
     album(id: any, length?: any): Promise<any>
-    get_streams(id: any): Promise<any>
+    private get_streams(id: any): Promise<any>
     reload(force?: any): Promise<any>
     get(id?: any): Promise<any>
     load(): Promise<any>
 
     // methods
-    check_valid_id(id: any): any
-    set_cookie(cookie: any): any
+    private check_valid_id(id: any): any
+    private set_cookie(cookie: any): any
     prefetch(): any
 }
 
