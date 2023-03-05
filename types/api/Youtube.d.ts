@@ -1,4 +1,5 @@
 import { Track as TrackBase, TrackResults, TrackPlaylist, TrackStream, TrackStreams } from '../Track'
+//TODO add types
 declare class YoutubeAPI {
     // properties
     innertube_client: {
@@ -18,21 +19,23 @@ declare class YoutubeAPI {
     Playlist: typeof YoutubePlaylist
 
     // async methods
-    api_request(path: any, body?: any, query?: any, origin?: any): Promise<any>
-    get(id: any): Promise<any>
-    get_streams(id: any): Promise<any>
-    playlist_once(id: any, start?: any): Promise<any>
-    playlist(id: any, limit: any): Promise<any>
-    search(query: any, continuation?: any): Promise<any>
-    track_match_lookup(track: any): Promise<any>
-    track_match(track: any): Promise<any>
+    api_request(path: string, body?: object, query?: string, origin?: string): Promise<any>
+    get(id: string): Promise<YoutubeTrack>
+    get_streams(id: string): Promise<YoutubeStreams>
+    playlist_once(id: string, start?: number): Promise<YoutubePlaylist>
+    playlist(id: string, limit?: number): Promise<YoutubePlaylist>
+    search(query: string, continuation?: string): Promise<YoutubeResults>
+    track_match_lookup(track: YoutubeMusicTrack): Promise<YoutubeMusicTrack>
+    // ?
+    track_match(track: any): Promise<YoutubeStreams | YoutubeMusicTrack>
 
     // methods
-    set_cookie(cookiestr?: any): any
-    string_word_match(big: any, small: any): any
-    track_match_score(track: any, result: any): any
-    track_match_best(results: any, track: any): any
-    track_match_best_result(results: any, track: any): any
+    set_cookie(cookiestr?: string): void
+    string_word_match(big: string, small: string): number
+    track_match_score(track: YoutubeMusicTrack, result: YoutubeMusicTrack): number
+    // ?
+    track_match_best(results: any[], track: YoutubeMusicTrack): YoutubeMusicTrack | null
+    track_match_best_result(results: YoutubeMusicResults[], track: YoutubeMusicTrack): YoutubeMusicTrack
 }
 
 declare class YoutubeMusic {
@@ -59,7 +62,7 @@ declare class YoutubeTrack extends TrackBase {
     plattform: 'Youtube'
 
     // getters
-    get url(): string
+    get url(): URL
 
     // async methods
     fetch(): Promise<any>
@@ -142,7 +145,8 @@ declare class YoutubeMusicResults extends TrackResults {
 
 declare const api: YoutubeAPI
 export default api
-export const Music: YoutubeMusic
-export const Track: typeof YoutubeTrack
-export const Results: typeof YoutubePlaylist
-export const Playlist: typeof YoutubePlaylist
+// export const Music: YoutubeMusic
+// export const Track: typeof YoutubeTrack
+// export const Results: typeof YoutubePlaylist
+// export const Playlist: typeof YoutubePlaylist
+export { YoutubeTrack, YoutubeStreams, YoutubePlaylist, YoutubeResults }

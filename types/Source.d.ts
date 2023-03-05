@@ -1,6 +1,6 @@
 // const SourceError = require('./SourceError')
 import SoundcloudAPI from './api/Soundcloud'
-import YoutubeAPI from './api/Youtube'
+import YoutubeAPI, { YoutubePlaylist, YoutubeResults, YoutubeStreams, YoutubeTrack } from './api/Youtube'
 import SpotifyAPI from './api/Spotify'
 // TODO: ADD AppleMusicAPI & FileAPI
 
@@ -43,11 +43,11 @@ declare class APISource<T extends 'Youtube' | 'Spotify' | 'Soundcloud' | 'AppleM
     // async methods
     resolve(match?: any): Promise<null>
     // ?
-    get(id?: any): Promise<any>
+    get(id: string): Promise<T extends 'Youtube' ? YoutubeTrack : any>
     // ?
-    getStreams(id?: any): Promise<any>
-    search(query?: any): Promise<null>
-    playlistOnce(id?: any): Promise<null>
+    getStreams(id: any): Promise<T extends 'Youtube' ? YoutubeStreams : any>
+    search(query?: any): Promise<T extends 'Youtube' ? YoutubeResults : any>
+    playlistOnce(id?: any): Promise<any>
     // ?
     playlist(id: any, length?: any): Promise<any>
 
@@ -73,9 +73,8 @@ declare class Youtube extends APISource<'Youtube'> {
     // ?
     weak_resolve(match: { id: string } | { list: string }): Promise<any>
     // ?
-    search(query: any, continuation?: any): Promise<any>
-    // ?
-    playlistOnce(id: any, start?: any): Promise<any>
+    search(query: any, continuation?: any): Promise<YoutubeResults>
+    playlistOnce(id: string, start?: number): Promise<YoutubePlaylist>
 }
 
 declare class Soundcloud extends APISource<'Soundcloud'> {
